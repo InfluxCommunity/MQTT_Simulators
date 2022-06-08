@@ -1,6 +1,11 @@
-# MQTT Emergency Generator Simulator
+# MQTT Simulators
 
-This repoistory will allow you to spin up Emergency Generators producing fake IoT data. Each generator will write to its own MQTT topic the following values: 
+This repoistory will allow you to spin up differnt MQTT simulators producing fake IoT data for differnt scenerios. 
+
+## Scenarios
+
+### Emergency Generators (Payload: JSON)
+Each generator will write to its own MQTT topic the following values: 
 
 1. Load
 2. Voltage
@@ -13,9 +18,29 @@ The payload will look like this:
 {"generatorID": "generator1", "lat": 40.68066, "lon": -73.47429, "temperature": 186, "power": 186, "load": 2, "fuel": 277}
 ```
 
+### Construction Yard (Payload: Single Value)
+*WORK IN PROGRESS*
+Each vehicle will write to its own MQTT topic and subtopics the following values: 
+
+1. Speed
+2. Temperature
+3. Vibration
+
+The payload will look like this:
+
+```
+RoadRoller/Temperature 24.1
+RoadRoller/Speed 12
+RoadRoller/Vibration 1.00394
+```
+
+
+
+## Setup
+
 There are two ways to setup this Sim: Docker + Locally
 
-## Option1: Locally
+### Option1: Locally
 
 1. Install the Mosquitto MQTT Broker onto your device:
 
@@ -63,7 +88,7 @@ export BROKER=localhost
 python3 src/emergency_generator.py
 ```
 
-## Option2: Docker (Recommended)
+### Option2: Docker (Recommended)
 
 
 1. Clone this repo to your system
@@ -75,7 +100,7 @@ git clone https://github.com/Jayclifford345/mqtt-emergency-generator.git
 2. Build the simulator docker image:
 
 ```bash
-docker build generator_simulator/. -t emergency-generator:latest
+docker build emergency_generator/. -t emergency-generator:latest
 ```
 
 3. Deploy the docker-compose file:
@@ -84,7 +109,7 @@ docker build generator_simulator/. -t emergency-generator:latest
 docker-compose up -d
 ```
 
-## Edge to Cloud Replication
+### Edge to Cloud Replication
 This section will teach you how to configure InfluxDB OSS to send data to InfluxDB Cloud.
 
 1. Create a remote connection
