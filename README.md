@@ -1,6 +1,6 @@
 # MQTT Simulators
 
-This repoistory will allow you to spin up differnt MQTT simulators producing fake IoT data for differnt scenerios. 
+This repository will allow you to spin up different MQTT simulators producing fake IoT data for different scenarios. 
 
 ## Scenarios
 
@@ -51,7 +51,7 @@ There are two ways to setup this Sim: Docker + Locally
 1. Clone this repo to your system
 
 ```bash
-git clone https://github.com/Jayclifford345/mqtt-emergency-generator.git
+git clone https://github.com/InfluxCommunity/MQTT_Simulators.git
 ```
 
 2. Build the simulator docker image:
